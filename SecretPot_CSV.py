@@ -13,7 +13,7 @@ window_size_vertical = 768
 title_main_str = "闇鍋★ショートストーリー"
 
 # CSVファイルを開く
-with open(r'D:\30programming\py3\SecretPot.csv', encoding="utf-8") as f:
+with open(r'D:\30programming\py3\SecretPot_ShortStory\SecretPot.csv', encoding="utf-8") as f:
     reader = csv.reader(f)
 
     # 行を取得
