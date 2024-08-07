@@ -1,9 +1,9 @@
 import random
 import time
 import tkinter as tk
-from tkinter import ttk
 import csv
-import pprint
+import sys
+from pathlib import Path
 
 onde_b = "ロンド B スクエア"
 biz_ud = "BIZ UDゴシック"
@@ -12,8 +12,18 @@ window_size_horizontal = 1024
 window_size_vertical = 768
 title_main_str = "闇鍋★ショートストーリー"
 
-# CSVファイルを開く
-with open(r'D:\30programming\py3\SecretPot_ShortStory\SecretPot.csv', encoding="utf-8") as f:
+# # CSVファイルを開く
+# script_dir = os.path.dirname(os.path.abspath(__file__))
+# csv_path = os.path.join(script_dir, 'SecretPot.csv')
+
+if hasattr(sys, '_MEIPASS'):
+    script_dir = Path(sys._MEIPASS)
+else:
+    script_dir = Path(__file__).resolve().parent
+
+csv_path = script_dir / 'SecretPot.csv'
+
+with open(csv_path, encoding="utf-8") as f:
     reader = csv.reader(f)
 
     # 行を取得
@@ -39,7 +49,6 @@ when = l_T[1]
 where = l_T[2]
 who = l_T[3]
 what = l_T[4]
-
 
 # GUIの設定
 root = tk.Tk()
@@ -78,29 +87,29 @@ def Display(index=0):
         text = f"{selected_member}："
         text_widget.insert(tk.END, text)
         root.update()
-        time.sleep(2)
+        time.sleep(1)
 
         text = f"{selected_when}"
         text_widget.insert(tk.END, text)
         root.update()
-        time.sleep(2)
+        time.sleep(1)
 
         text = f"{selected_where}"
         text_widget.insert(tk.END, text)
         root.update()
-        time.sleep(2)
+        time.sleep(1)
         
         text = f"{selected_who}"
         text_widget.insert(tk.END, text)
         root.update()
-        time.sleep(2)        
+        time.sleep(1)        
 
         text = f"{selected_what}\n"
         text_widget.insert(tk.END, text)
         root.update()
-        time.sleep(2)
+        time.sleep(1)
 
-        root.after(10000, Display, index + 1)  # 0ミリ秒後に次のテキストを表示
+        root.after(3000, Display, index + 1)  # 0ミリ秒後に次のテキストを表示
     else:
         text_widget.insert(tk.END, "抽選終了\n")
 
